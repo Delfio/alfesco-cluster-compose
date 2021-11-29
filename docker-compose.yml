@@ -11,7 +11,6 @@ version: "2"
 services:
    alfresco:
       image: alfresco/alfresco-content-repository-community:7.1.0.1
-      mem_limit: 1500m
       environment:
          JAVA_TOOL_OPTIONS: "
             -Dencryption.keystore.type=JCEKS
@@ -48,7 +47,6 @@ services:
 
    transform-core-aio:
       image: alfresco/alfresco-transform-core-aio:2.5.3
-      mem_limit: 1536m
       environment:
          JAVA_OPTS: " -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=80"
       ports:
@@ -56,7 +54,6 @@ services:
 
    share:
       image: alfresco/alfresco-share:7.1.0.1
-      mem_limit: 1g
       environment:
          REPO_HOST: "alfresco"
          REPO_PORT: "8080"
@@ -71,7 +68,6 @@ services:
 
    postgres:
       image: postgres:13.1
-      mem_limit: 512m
       environment:
          - POSTGRES_PASSWORD=alfresco
          - POSTGRES_USER=alfresco
@@ -82,7 +78,6 @@ services:
 
    solr6:
       image: alfresco/alfresco-search-services:2.0.2
-      mem_limit: 2g
       environment:
          #Solr needs to know how to register itself with Alfresco
          - SOLR_ALFRESCO_HOST=alfresco
@@ -99,7 +94,6 @@ services:
 
    activemq:
       image: alfresco/alfresco-activemq:5.16.1
-      mem_limit: 1g
       ports:
          - 8161:8161 # Web Console
          - 5672:5672 # AMQP
@@ -108,7 +102,6 @@ services:
 
    proxy:
       image: alfresco/alfresco-acs-nginx:3.1.1
-      mem_limit: 128m
       environment:
          DISABLE_PROMETHEUS: "true"
          DISABLE_SYNCSERVICE: "true"
