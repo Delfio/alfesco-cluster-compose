@@ -6,11 +6,13 @@
 # For performance tuning, assign the container memory and give a percentage of it to the JVM.
 
 # Using version 2 as 3 does not support resource constraint options (cpu_*, mem_* limits) for non swarm mode in Compose
-version: "2"
+version: "3"
 
 services:
    alfresco:
       image: alfresco/alfresco-content-repository-community:7.1.0.1
+      deploy:
+         replicas: 3
       environment:
          JAVA_TOOL_OPTIONS: "
             -Dencryption.keystore.type=JCEKS
